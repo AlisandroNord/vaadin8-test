@@ -32,7 +32,9 @@ public class MyUI extends UI {
         layout.setSizeFull();
         layout.addComponents(grid.getGrid(), clientForm.getClientForm());
         grid.getGrid().asSingleSelect().addValueChangeListener(e ->{
-            if(e.getValue() != null){
+            if(e.getValue() == null){
+                clientForm.setClient(new Client());
+            } else {
                 clientForm.setClient(e.getValue());
             }
         });
@@ -45,5 +47,6 @@ public class MyUI extends UI {
     }
     public void refresh(){
         grid.refresh();
+        clientForm.setClient(null);
     }
 }

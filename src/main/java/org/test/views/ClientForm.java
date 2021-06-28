@@ -1,10 +1,7 @@
 package org.test.views;
 
 import com.vaadin.data.Binder;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.DateField;
-import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.TextField;
+import com.vaadin.ui.*;
 import org.test.MyUI;
 import org.test.entity.Client;
 import org.test.service.ClientService;
@@ -47,27 +44,28 @@ public class ClientForm {
         return this.formLayout;
     }
     private void delete() {
-        service.deleteClient(client);
-        myUI.refresh();
+        if(client != null) {
+            service.deleteClient(client);
+            myUI.refresh();
+            Notification.show("Client deleted");
+        } else {
+            Notification.show("Client is null");
+        }
     }
     private void save(){
-        service.updateClient(client);
-        myUI.refresh();
+        if(client != null) {
+            service.updateClient(client);
+            myUI.refresh();
+        } else {
+            Notification.show("Client is null");
+        }
     }
 
     private void add() {
-        setClient(new Client());
         service.saveClient(client);
         myUI.refresh();
     }
-    private void getClientFromForm(){
-        client = new Client(
-                name.getValue(),
-                phone.getValue(),
-                email.getValue(),
-                address.getValue(),
-                dateOfBirth.getValue());
-    }
+
     public void setClient(Client client){
         this.client = client;
         binder.setBean(client);
