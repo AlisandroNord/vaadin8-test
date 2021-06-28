@@ -6,8 +6,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "vaadin_clients")
 public class Client {
-    public Client(Integer id, String name, String phone, String email, String address, LocalDate dateOfBirth) {
-        this.id = id;
+    public Client(String name, String phone, String email, String address, LocalDate dateOfBirth) {
         this.name = name;
         this.phone = phone;
         this.email = email;

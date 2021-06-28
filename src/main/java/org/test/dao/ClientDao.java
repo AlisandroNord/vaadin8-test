@@ -7,7 +7,6 @@ import org.test.entity.Client;
 import org.test.utils.HibernateSessionFactoryUtil;
 
 import java.util.List;
-import java.util.Optional;
 
 public class ClientDao implements Dao<Client, Integer>{
     private final SessionFactory sessionFactory = HibernateSessionFactoryUtil.getSessionFactory();
