@@ -12,6 +12,7 @@ public class ClientForm {
     private Client client;
 
     private FormLayout formLayout = new FormLayout();
+    private HorizontalLayout buttonLayout = new HorizontalLayout();
     private TextField name = new TextField("Name");
     private TextField phone = new TextField("Phone");
     private TextField email = new TextField("Email");
@@ -27,7 +28,8 @@ public class ClientForm {
     public ClientForm(MyUI myUI){
 
         this.myUI = myUI;
-        formLayout.addComponents(name, phone, email, address, dateOfBirth, addButton, savButton, delButton);
+        buttonLayout.addComponents(addButton, savButton, delButton);
+        formLayout.addComponents(name, phone, email, address, dateOfBirth, buttonLayout);
         formLayout.setWidthUndefined();
         binder.bindInstanceFields(this);
         addButton.addClickListener(e -> {
