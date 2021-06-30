@@ -2,6 +2,7 @@ package org.test.views;
 
 import com.vaadin.data.Binder;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 import org.test.MyUI;
 import org.test.entity.Client;
 import org.test.service.ClientService;
@@ -26,8 +27,9 @@ public class ClientForm {
     private Binder<Client> binder = new Binder<>(Client.class);
 
     public ClientForm(MyUI myUI){
-
+        setClient(new Client());
         this.myUI = myUI;
+        addButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
         buttonLayout.addComponents(addButton, savButton, delButton);
         formLayout.addComponents(name, phone, email, address, dateOfBirth, buttonLayout);
         formLayout.setWidthUndefined();
@@ -64,6 +66,8 @@ public class ClientForm {
     }
 
     private void add() {
+
+        binder.setBean(client);
         service.saveClient(client);
         myUI.refresh();
     }

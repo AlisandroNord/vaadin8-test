@@ -47,6 +47,6 @@ public class MyUI extends UI {
     }
     public void refresh(){
         grid.refresh();
-        clientForm.setClient(null);
+        clientForm.setClient(new Client());
     }
 }
